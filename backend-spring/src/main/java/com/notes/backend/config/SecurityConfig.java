@@ -46,11 +46,11 @@ public class SecurityConfig {
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(authz -> authz
                 // Endpoints publics
-                .requestMatchers("/").permitAll()
+                .requestMatchers("/", "/index.html").permitAll()
                 .requestMatchers("/auth/**").permitAll()
                 .requestMatchers("/p/**").permitAll()
                 .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll()
-                .requestMatchers("/api-docs").permitAll()
+                .requestMatchers("/api-docs", "/api-docs/**", "/swagger-resources/**", "/webjars/**").permitAll()
                 .requestMatchers("/actuator/**").permitAll()
                 .requestMatchers("/h2-console/**").permitAll()
                 // Tous les autres endpoints nécessitent une authentification

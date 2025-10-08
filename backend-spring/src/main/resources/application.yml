@@ -78,3 +78,7 @@ springdoc:
     path: /swagger-ui.html
     operationsSorter: method
     tagsSorter: alpha
+    disable-swagger-default-url: true
+    use-root-path: true
+    config-url: /api-docs/swagger-config
+    url: /api-docs
