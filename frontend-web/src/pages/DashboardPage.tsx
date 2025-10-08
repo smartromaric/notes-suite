@@ -17,6 +17,7 @@ import {
 import { useAuth } from '../hooks/useAuth';
 import { useNotes } from '../hooks/useNotes';
 import ShareModal from '../components/ShareModal';
+import { NoteCardSkeleton, StatsCardSkeleton } from '../components/Skeleton';
 import type { Note } from '../types';
 
 const DashboardPage: React.FC = () => {
@@ -220,6 +221,15 @@ const DashboardPage: React.FC = () => {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+          {isLoading ? (
+            <>
+              <StatsCardSkeleton />
+              <StatsCardSkeleton />
+              <StatsCardSkeleton />
+              <StatsCardSkeleton />
+            </>
+          ) : (
+            <>
           <div className="card">
             <div className="flex items-center">
               <div className="p-2 bg-primary-100 rounded-lg">
@@ -273,12 +283,19 @@ const DashboardPage: React.FC = () => {
               </div>
             </div>
           </div>
+            </>
+          )}
         </div>
 
         {/* Notes Grid */}
         {isLoading ? (
-          <div className="flex justify-center items-center py-12">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <NoteCardSkeleton />
+            <NoteCardSkeleton />
+            <NoteCardSkeleton />
+            <NoteCardSkeleton />
+            <NoteCardSkeleton />
+            <NoteCardSkeleton />
           </div>
         ) : notes.length === 0 ? (
           <div className="text-center py-12">

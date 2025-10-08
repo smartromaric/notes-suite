@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useNotes } from '../hooks/useNotes';
 import MarkdownRenderer from '../components/MarkdownRenderer';
+import { NoteDetailSkeleton } from '../components/Skeleton';
 
 const PublicNotePage: React.FC = () => {
   const { token } = useParams<{ token: string }>();
@@ -15,8 +16,10 @@ const PublicNotePage: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
+      <div className="min-h-screen bg-gray-50">
+        <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <NoteDetailSkeleton />
+        </main>
       </div>
     );
   }

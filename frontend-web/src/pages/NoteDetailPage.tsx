@@ -16,6 +16,7 @@ import {
 import { useNotes } from '../hooks/useNotes';
 import { useAuth } from '../hooks/useAuth';
 import MarkdownRenderer from '../components/MarkdownRenderer';
+import { NoteDetailSkeleton } from '../components/Skeleton';
 
 const NoteDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -88,8 +89,22 @@ const NoteDetailPage: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
+      <div className="min-h-screen bg-gray-50">
+        <header className="bg-white shadow-sm border-b border-gray-200">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center h-16">
+              <div className="flex items-center space-x-4">
+                <Link to="/dashboard" className="p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100">
+                  <ArrowLeft className="w-5 h-5" />
+                </Link>
+                <h1 className="text-xl font-semibold text-gray-900">Note Details</h1>
+              </div>
+            </div>
+          </div>
+        </header>
+        <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <NoteDetailSkeleton />
+        </main>
       </div>
     );
   }

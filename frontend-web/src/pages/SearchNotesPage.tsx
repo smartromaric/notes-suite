@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { ArrowLeft, Search, Tag, Eye, EyeOff, Share2 } from 'lucide-react';
 import { useNotes } from '../hooks/useNotes';
+import { TableRowSkeleton } from '../components/Skeleton';
 
 const SearchNotesPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -149,8 +150,11 @@ const SearchNotesPage: React.FC = () => {
 
         {/* Results */}
         {isLoading ? (
-          <div className="flex justify-center items-center py-12">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
+          <div className="space-y-4">
+            <TableRowSkeleton />
+            <TableRowSkeleton />
+            <TableRowSkeleton />
+            <TableRowSkeleton />
           </div>
         ) : filteredNotes.length === 0 ? (
           <div className="text-center py-12">
