@@ -132,4 +132,4 @@ temp/
 *.njsproj
 *.sln
 *.sw?
-mobile-expo-temp
+/mobile-expo-temp/
