@@ -36,8 +36,8 @@ const LoginPage: React.FC = () => {
           <div className="inline-flex items-center justify-center w-16 h-16 bg-yellow-500 rounded-full mb-4">
             <User className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-3xl font-bold text-white mb-2">Welcome Back!</h1>
-          <p className="text-gray-300">Sign in to your account</p>
+          <h1 className="text-3xl font-bold text-white mb-2">Bienvenue !</h1>
+          <p className="text-gray-300">Connectez-vous à votre compte</p>
         </div>
 
         {/* Login Form */}
@@ -46,7 +46,7 @@ const LoginPage: React.FC = () => {
             {/* Email Field */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                Email Address
+                Email 
               </label>
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
@@ -65,7 +65,7 @@ const LoginPage: React.FC = () => {
             {/* Password Field */}
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-                Password
+                Mot de Passe
               </label>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
@@ -75,7 +75,7 @@ const LoginPage: React.FC = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="input-field pl-10 pr-10"
-                  placeholder="Enter your password"
+                  placeholder="Entrez votre mot de passe"
                   required
                 />
                 <button
@@ -88,7 +88,7 @@ const LoginPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Remember Me & Forgot Password */}
+            {/* Remember Me & Forgot Password
             <div className="flex items-center justify-between">
               <label className="flex items-center">
                 <input
@@ -102,7 +102,7 @@ const LoginPage: React.FC = () => {
               <Link to="/forgot-password" className="text-sm text-primary-600 hover:text-primary-500">
                 Forgot password?
               </Link>
-            </div>
+            </div> */}
 
             {/* Error Message */}
             {error && (
@@ -129,19 +129,19 @@ const LoginPage: React.FC = () => {
               {isLoading ? (
                 <div className="flex items-center justify-center">
                   <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                  Signing in...
+                  Connexion...
                 </div>
               ) : (
-                'Sign In'
+                'Se connecter'
               )}
             </button>
 
             {/* Register Link */}
             <div className="text-center">
               <p className="text-sm text-gray-600">
-                Don't have an account?{' '}
+                Vous n'avez pas de compte ?{' '}
                 <Link to="/register" className="font-medium text-primary-600 hover:text-primary-500">
-                  Sign up
+                  S'inscrire
                 </Link>
               </p>
             </div>

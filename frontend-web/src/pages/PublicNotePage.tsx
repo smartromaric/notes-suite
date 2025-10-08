@@ -28,8 +28,8 @@ const PublicNotePage: React.FC = () => {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Note not found</h1>
-          <p className="text-gray-500">This public note may have been removed or the link is invalid.</p>
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">Note non trouvée</h1>
+          <p className="text-gray-500">Cette note publique a peut-être été supprimée ou le lien est invalide.</p>
         </div>
       </div>
     );
@@ -42,9 +42,9 @@ const PublicNotePage: React.FC = () => {
           <div className="p-6 border-b border-gray-200">
             <h1 className="text-3xl font-bold text-gray-900 mb-4">{publicNote.title}</h1>
             <div className="flex items-center text-sm text-gray-500">
-              <span>By {publicNote.owner.name}</span>
+              <span>Par {publicNote.owner.name}</span>
               <span className="mx-2">•</span>
-              <span>{new Date(publicNote.createdAt).toLocaleDateString()}</span>
+              <span>{new Date(publicNote.createdAt).toLocaleDateString('fr-FR')}</span>
             </div>
           </div>
 

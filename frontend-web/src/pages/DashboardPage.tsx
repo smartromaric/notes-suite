@@ -62,13 +62,13 @@ const DashboardPage: React.FC = () => {
   }, [searchQuery, selectedTags, visibilityFilter, loadNotes]);
 
   const handleDeleteNote = async (noteId: number) => {
-    if (window.confirm('Are you sure you want to delete this note?')) {
+    if (window.confirm('Êtes-vous sûr de vouloir supprimer cette note ?')) {
       await deleteNote(noteId);
     }
   };
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
+    return new Date(dateString).toLocaleDateString('fr-FR', {
       year: 'numeric',
       month: 'short',
       day: 'numeric',
@@ -109,7 +109,7 @@ const DashboardPage: React.FC = () => {
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                 <input
                   type="text"
-                  placeholder="Search notes..."
+                  placeholder="Rechercher des notes..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
@@ -158,7 +158,7 @@ const DashboardPage: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {/* Tags Filter */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Tags</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Étiquettes</label>
                 <div className="flex flex-wrap gap-2">
                   {allTags.map((tag) => (
                     <button
@@ -185,16 +185,16 @@ const DashboardPage: React.FC = () => {
 
               {/* Visibility Filter */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Visibility</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Visibilité</label>
                 <select
                   value={visibilityFilter}
                   onChange={(e) => setVisibilityFilter(e.target.value as any)}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
                 >
-                  <option value="ALL">All Notes</option>
-                  <option value="PRIVATE">Private</option>
-                  <option value="SHARED">Shared</option>
-                  <option value="PUBLIC">Public</option>
+                  <option value="ALL">Toutes les notes</option>
+                  <option value="PRIVATE">Privée</option>
+                  <option value="SHARED">Partagée</option>
+                  <option value="PUBLIC">Publique</option>
                 </select>
               </div>
 
@@ -209,7 +209,7 @@ const DashboardPage: React.FC = () => {
                   }}
                   className="btn-secondary"
                 >
-                  Clear Filters
+                  Effacer les filtres
                 </button>
               </div>
             </div>
@@ -237,7 +237,7 @@ const DashboardPage: React.FC = () => {
               </div>
               <div className="ml-4">
                 <p className="text-sm font-medium text-gray-600">
-                  {searchQuery || selectedTags.length > 0 || visibilityFilter !== 'ALL' ? 'Results' : 'Total Notes'}
+                  {searchQuery || selectedTags.length > 0 || visibilityFilter !== 'ALL' ? 'Résultats' : 'Total Notes'}
                 </p>
                 <p className="text-2xl font-bold text-gray-900">{notes.length}</p>
               </div>
@@ -250,7 +250,7 @@ const DashboardPage: React.FC = () => {
                 <Eye className="w-6 h-6 text-green-600" />
               </div>
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">Public</p>
+                <p className="text-sm font-medium text-gray-600">Publiques</p>
                 <p className="text-2xl font-bold text-gray-900">
                   {notes.filter(n => n.visibility === 'PUBLIC').length}
                 </p>
@@ -264,7 +264,7 @@ const DashboardPage: React.FC = () => {
                 <Share2 className="w-6 h-6 text-blue-600" />
               </div>
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">Shared</p>
+                <p className="text-sm font-medium text-gray-600">Partagées</p>
                 <p className="text-2xl font-bold text-gray-900">
                   {notes.filter(n => n.visibility === 'SHARED').length}
                 </p>
@@ -302,11 +302,11 @@ const DashboardPage: React.FC = () => {
             <div className="mx-auto w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-4">
               <User className="w-12 h-12 text-gray-400" />
             </div>
-            <h3 className="text-lg font-medium text-gray-900 mb-2">No notes found</h3>
-            <p className="text-gray-500 mb-6">Get started by creating your first note.</p>
-            <Link to="/notes/new" className="btn-primary">
+            <h3 className="text-lg font-medium text-gray-900 mb-2">Aucune note trouvée</h3>
+            <p className="text-gray-500 mb-6">Créez vos premières notes.</p>
+            <Link to="/notes/new" className="flex place-self-center bg-blue-400 hover:bg-blue-600 rounded-full p-4 text-white transition-colors">
               <Plus className="w-5 h-5 mr-2" />
-              Create Note
+              Créer une note
             </Link>
           </div>
         ) : (
@@ -371,7 +371,7 @@ const DashboardPage: React.FC = () => {
                     onClick={() => navigate(`/notes/${note.id}`)}
                     className="text-primary-600 hover:text-primary-700 font-medium text-sm"
                   >
-                    Read more →
+                    Lire plus →
                   </button>
                   <div className="flex space-x-2">
                     <button

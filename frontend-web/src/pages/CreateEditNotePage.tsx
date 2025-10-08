@@ -73,7 +73,7 @@ const CreateEditNotePage: React.FC = () => {
                 <ArrowLeft className="w-5 h-5" />
               </Link>
               <h1 className="text-xl font-semibold text-gray-900">
-                {isEditing ? 'Edit Note' : 'Create Note'}
+                {isEditing ? 'Modifier la note' : 'Créer une note'}
               </h1>
             </div>
 
@@ -96,7 +96,7 @@ const CreateEditNotePage: React.FC = () => {
             {/* Title */}
             <div className="mb-6">
               <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-2">
-                Title
+                Titre
               </label>
               <input
                 id="title"
@@ -104,7 +104,7 @@ const CreateEditNotePage: React.FC = () => {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 className="input-field"
-                placeholder="Enter note title..."
+                placeholder="Entrez le titre de la note..."
                 required
               />
             </div>
@@ -112,13 +112,13 @@ const CreateEditNotePage: React.FC = () => {
             {/* Visibility */}
             <div className="mb-6">
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Visibility
+                Visibilité
               </label>
               <div className="flex space-x-4">
                 {[
-                  { value: 'PRIVATE', label: 'Private', color: 'bg-gray-100 text-gray-800' },
-                  { value: 'SHARED', label: 'Shared', color: 'bg-blue-100 text-blue-800' },
-                  { value: 'PUBLIC', label: 'Public', color: 'bg-green-100 text-green-800' },
+                  { value: 'PRIVATE', label: 'Privée', color: 'bg-purple-100 text-purple-800' },
+                  { value: 'SHARED', label: 'Partagée', color: 'bg-blue-100 text-blue-800' },
+                  { value: 'PUBLIC', label: 'Publique', color: 'bg-green-100 text-green-800' },
                 ].map((option) => (
                   <label key={option.value} className="flex items-center">
                     <input
@@ -128,9 +128,10 @@ const CreateEditNotePage: React.FC = () => {
                       checked={visibility === option.value}
                       onChange={(e) => setVisibility(e.target.value as any)}
                       className="sr-only"
+                      disabled
                     />
                     <span
-                      className={`px-4 py-2 rounded-lg cursor-pointer transition-colors ${
+                      className={`px-4 py-2 rounded-lg  transition-colors ${
                         visibility === option.value
                           ? option.color
                           : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
@@ -146,7 +147,7 @@ const CreateEditNotePage: React.FC = () => {
             {/* Tags */}
             <div className="mb-6">
               <label htmlFor="tags" className="block text-sm font-medium text-gray-700 mb-2">
-                Tags
+                Étiquettes
               </label>
               <input
                 id="tags"
@@ -154,17 +155,17 @@ const CreateEditNotePage: React.FC = () => {
                 value={tags}
                 onChange={(e) => setTags(e.target.value)}
                 className="input-field"
-                placeholder="Enter tags separated by commas..."
+                placeholder="Entrez les étiquettes séparées par des virgules..."
               />
               <p className="text-sm text-gray-500 mt-1">
-                Separate multiple tags with commas
+                Séparez les étiquettes multiples par des virgules
               </p>
             </div>
 
             {/* Content */}
             <div className="mb-6">
               <label htmlFor="content" className="block text-sm font-medium text-gray-700 mb-2">
-                Content
+                Contenu
               </label>
               {showPreview ? (
                 <div className="border border-gray-300 rounded-lg p-6 min-h-[400px] bg-white">
@@ -174,18 +175,18 @@ const CreateEditNotePage: React.FC = () => {
                 <MarkdownEditor
                   value={content}
                   onChange={setContent}
-                  placeholder="Write your note content here using Markdown..."
+                  placeholder="Écrivez le contenu de votre note ici en Markdown..."
                 />
               )}
               <p className="text-sm text-gray-500 mt-1">
-                Supports full Markdown syntax with live preview
+                Supporte la syntaxe Markdown complète avec aperçu en direct
               </p>
             </div>
 
             {/* Actions */}
             <div className="flex justify-end space-x-4">
               <Link to="/dashboard" className="btn-secondary">
-                Cancel
+                Annuler
               </Link>
               <button
                 type="submit"
@@ -195,12 +196,12 @@ const CreateEditNotePage: React.FC = () => {
                 {isLoading ? (
                   <div className="flex items-center">
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                    Saving...
+                    Enregistrement...
                   </div>
                 ) : (
                   <div className="flex items-center">
                     <Save className="w-4 h-4 mr-2" />
-                    {isEditing ? 'Update Note' : 'Create Note'}
+                    {isEditing ? 'Mettre à jour' : 'Créer la note'}
                   </div>
                 )}
               </button>

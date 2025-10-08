@@ -44,10 +44,10 @@ const SharePublicPage: React.FC = () => {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Note not found</h1>
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">Note non trouvée</h1>
           <Link to="/dashboard" className="btn-primary">
             <ArrowLeft className="w-5 h-5 mr-2" />
-            Back to Dashboard
+            Retour au tableau de bord
           </Link>
         </div>
       </div>
@@ -65,7 +65,7 @@ const SharePublicPage: React.FC = () => {
             >
               <ArrowLeft className="w-5 h-5" />
             </Link>
-            <h1 className="text-xl font-semibold text-gray-900">Public Link</h1>
+            <h1 className="text-xl font-semibold text-gray-900">Lien public</h1>
           </div>
         </div>
       </header>
@@ -83,10 +83,10 @@ const SharePublicPage: React.FC = () => {
               <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
                 <div className="flex items-center mb-2">
                   <ExternalLink className="w-5 h-5 text-green-600 mr-2" />
-                  <span className="text-sm font-medium text-green-800">Public link created successfully!</span>
+                  <span className="text-sm font-medium text-green-800">Lien public créé avec succès !</span>
                 </div>
                 <p className="text-sm text-green-700">
-                  Anyone with this link can view your note.
+                  Toute personne avec ce lien peut voir votre note.
                 </p>
               </div>
 
@@ -103,24 +103,24 @@ const SharePublicPage: React.FC = () => {
               </div>
 
               {copied && (
-                <p className="text-sm text-green-600 text-center">Link copied to clipboard!</p>
+                <p className="text-sm text-green-600 text-center">Lien copié dans le presse-papiers !</p>
               )}
             </div>
           ) : (
             <div className="text-center py-8">
-              <p className="text-gray-500">Failed to generate public link. Please try again.</p>
+              <p className="text-gray-500">Échec de génération du lien public. Veuillez réessayer.</p>
               <button
                 onClick={generatePublicLink}
                 className="btn-primary mt-4"
               >
-                Try Again
+                Réessayer
               </button>
             </div>
           )}
 
           <div className="mt-6 flex justify-end">
             <Link to={`/notes/${id}`} className="btn-secondary">
-              Back to Note
+              Retour à la note
             </Link>
           </div>
         </div>

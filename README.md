@@ -18,31 +18,52 @@ notes-suite/
 
 ## 🚀 Démarrage rapide
 
-### Prérequis
-- Java 17+
-- Node.js 18+
-- React Native CLI
-- Docker (optionnel)
+### Option 1: Docker (Recommandé) 🐳
 
-### Installation complète
 ```bash
 # Cloner le projet
-git clone <repo-url>
-cd notes-suite
+git clone https://github.com/smartromaric/notes-suite.git
+cd notes-suite/docker
 
+# Lancer l'application complète
+./start.sh
+
+# Ou manuellement
+docker-compose up -d
+```
+
+**Accès:**
+- Frontend: http://localhost:5173
+- Backend: http://localhost:9090
+- API Docs: http://localhost:9090/swagger-ui.html
+
+### Option 2: Installation manuelle
+
+#### Prérequis
+- Java 17+
+- Node.js 18+
+- Maven 3.6+
+
+```bash
 # Backend Spring Boot
 cd backend-spring
 ./mvnw spring-boot:run
 
 # Frontend Web (nouveau terminal)
-cd web-frontend
+cd frontend-web
 npm install
 npm run dev
 
-# Mobile App (nouveau terminal)
-cd mobile-app
-npm install
-npx react-native run-android  # ou run-ios
+# Mobile App Expo (nouveau terminal)
+cd mobile-expo
+
+# Créer le fichier .env avec votre adresse IP locale
+# Trouvez votre IP: ifconfig | grep "inet " (Mac/Linux) ou ipconfig (Windows)
+echo "API_URL=http://VOTRE_IP_LOCALE:9090" > .env
+# Exemple: echo "API_URL=http://192.168.1.100:9090" > .env
+
+npm install --legacy-peer-deps
+npx expo start
 ```
 
 ## 📋 Fonctionnalités
@@ -62,12 +83,17 @@ npx react-native run-android  # ou run-ios
 - Partage collaboratif
 - Authentification sécurisée
 
-### ✅ Mobile (React Native)
+### ✅ Mobile (React Native - Expo)
 - Application offline-first
 - Synchronisation automatique
 - Base de données SQLite locale
 - Gestion d'état avec Redux
 - Interface native iOS/Android
+- **⚠️ Configuration requise**: Créer un fichier `.env` dans `mobile-expo/` avec votre adresse IP locale
+  ```bash
+  # Exemple: mobile-expo/.env
+  API_URL=http://192.168.1.100:9090
+  ```
 
 ## 🛠️ Stack technique
 
@@ -127,23 +153,7 @@ docker-compose up -d
 - [Web Frontend Setup](web-frontend/README.md)
 - [Mobile App Setup](mobile-app/README.md)
 
-## 🧪 Tests
 
-```bash
-# Backend
-cd backend-spring && ./mvnw test
-
-# Frontend
-cd web-frontend && npm test
-
-# Mobile
-cd mobile-app && npm test
-```
-
-## 👥 Comptes de démo
-
-- **Admin**: admin@notes.com / admin123
-- **User**: user@notes.com / user123
 
 ---
 

@@ -25,10 +25,10 @@ const ShareNotePage: React.FC = () => {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Note not found</h1>
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">Note non trouvée</h1>
           <Link to="/dashboard" className="btn-primary">
             <ArrowLeft className="w-5 h-5 mr-2" />
-            Back to Dashboard
+            Retour au tableau de bord
           </Link>
         </div>
       </div>
@@ -46,7 +46,7 @@ const ShareNotePage: React.FC = () => {
             >
               <ArrowLeft className="w-5 h-5" />
             </Link>
-            <h1 className="text-xl font-semibold text-gray-900">Share Note</h1>
+            <h1 className="text-xl font-semibold text-gray-900">Partager la note</h1>
           </div>
         </div>
       </header>
@@ -58,7 +58,7 @@ const ShareNotePage: React.FC = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                Email Address
+                Adresse email
               </label>
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
@@ -76,7 +76,7 @@ const ShareNotePage: React.FC = () => {
 
             <div className="flex justify-end space-x-4">
               <Link to={`/notes/${id}`} className="btn-secondary">
-                Cancel
+                Annuler
               </Link>
               <button
                 type="submit"
@@ -86,12 +86,12 @@ const ShareNotePage: React.FC = () => {
                 {isLoading ? (
                   <div className="flex items-center">
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                    Sharing...
+                    Partage en cours...
                   </div>
                 ) : (
                   <div className="flex items-center">
                     <Send className="w-4 h-4 mr-2" />
-                    Share Note
+                    Partager la note
                   </div>
                 )}
               </button>

@@ -35,7 +35,7 @@ const NoteDetailPage: React.FC = () => {
   }, [note, isLoading, navigate]);
 
   const handleDelete = async () => {
-    if (window.confirm('Are you sure you want to delete this note?')) {
+    if (window.confirm('Êtes-vous sûr de vouloir supprimer cette note ?')) {
       await deleteNote(parseInt(id || '0'));
       navigate('/dashboard');
     }
@@ -65,7 +65,7 @@ const NoteDetailPage: React.FC = () => {
   };
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
+    return new Date(dateString).toLocaleDateString('fr-FR', {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
@@ -97,7 +97,7 @@ const NoteDetailPage: React.FC = () => {
                 <Link to="/dashboard" className="p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100">
                   <ArrowLeft className="w-5 h-5" />
                 </Link>
-                <h1 className="text-xl font-semibold text-gray-900">Note Details</h1>
+                <h1 className="text-xl font-semibold text-gray-900">Détails de la note</h1>
               </div>
             </div>
           </div>
@@ -113,10 +113,10 @@ const NoteDetailPage: React.FC = () => {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Note not found</h1>
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">Note non trouvée</h1>
           <Link to="/dashboard" className="btn-primary">
             <ArrowLeft className="w-5 h-5 mr-2" />
-            Back to Dashboard
+            Retour au tableau de bord
           </Link>
         </div>
       </div>
@@ -134,10 +134,10 @@ const NoteDetailPage: React.FC = () => {
                 to="/dashboard"
                 className="p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100"
               >
-                <ArrowLeft className="w-5 h-5" />
-              </Link>
-              <h1 className="text-xl font-semibold text-gray-900">Note Details</h1>
-            </div>
+              <ArrowLeft className="w-5 h-5" />
+            </Link>
+            <h1 className="text-xl font-semibold text-gray-900">Détails de la note</h1>
+          </div>
 
             <div className="flex items-center space-x-2">
               <button
@@ -185,12 +185,12 @@ const NoteDetailPage: React.FC = () => {
               </div>
               <div className="flex items-center">
                 <Calendar className="w-4 h-4 mr-2" />
-                <span>Created {formatDate(note.createdAt)}</span>
+                <span>Créée le {formatDate(note.createdAt)}</span>
               </div>
               {note.updatedAt !== note.createdAt && (
                 <div className="flex items-center">
                   <Calendar className="w-4 h-4 mr-2" />
-                  <span>Updated {formatDate(note.updatedAt)}</span>
+                  <span>Modifiée le {formatDate(note.updatedAt)}</span>
                 </div>
               )}
             </div>
@@ -226,7 +226,7 @@ const NoteDetailPage: React.FC = () => {
       {showShareOptions && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-lg shadow-xl max-w-md w-full p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Share Note</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Partager la note</h3>
             
             <div className="space-y-4">
               <button
@@ -236,8 +236,8 @@ const NoteDetailPage: React.FC = () => {
                 <div className="flex items-center">
                   <User className="w-5 h-5 mr-3 text-blue-500" />
                   <div>
-                    <div className="font-medium text-gray-900">Share with User</div>
-                    <div className="text-sm text-gray-500">Share with a specific user by email</div>
+                    <div className="font-medium text-gray-900">Partager avec un utilisateur</div>
+                    <div className="text-sm text-gray-500">Partager avec un utilisateur spécifique par email</div>
                   </div>
                 </div>
               </button>
@@ -249,8 +249,8 @@ const NoteDetailPage: React.FC = () => {
                 <div className="flex items-center">
                   <ExternalLink className="w-5 h-5 mr-3 text-green-500" />
                   <div>
-                    <div className="font-medium text-gray-900">Create Public Link</div>
-                    <div className="text-sm text-gray-500">Generate a public link for anyone to view</div>
+                    <div className="font-medium text-gray-900">Créer un lien public</div>
+                    <div className="text-sm text-gray-500">Générer un lien public visible par tous</div>
                   </div>
                 </div>
               </button>
@@ -278,7 +278,7 @@ const NoteDetailPage: React.FC = () => {
                 }}
                 className="btn-secondary"
               >
-                Close
+                Fermer
               </button>
             </div>
           </div>

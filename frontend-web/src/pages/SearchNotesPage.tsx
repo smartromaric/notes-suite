@@ -66,7 +66,7 @@ const SearchNotesPage: React.FC = () => {
             >
               <ArrowLeft className="w-5 h-5" />
             </button>
-            <h1 className="text-xl font-semibold text-gray-900">Search Notes</h1>
+            <h1 className="text-xl font-semibold text-gray-900">Rechercher des notes</h1>
           </div>
         </div>
       </header>
@@ -78,7 +78,7 @@ const SearchNotesPage: React.FC = () => {
             {/* Search Query */}
             <div>
               <label htmlFor="search" className="block text-sm font-medium text-gray-700 mb-2">
-                Search Query
+                Recherche
               </label>
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
@@ -88,14 +88,14 @@ const SearchNotesPage: React.FC = () => {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="input-field pl-10"
-                  placeholder="Search in title and content..."
+                  placeholder="Rechercher dans le titre et le contenu..."
                 />
               </div>
             </div>
 
             {/* Tags Filter */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Tags</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Étiquettes</label>
               <div className="flex flex-wrap gap-2">
                 {allTags.map((tag) => (
                   <button
@@ -122,16 +122,16 @@ const SearchNotesPage: React.FC = () => {
 
             {/* Visibility Filter */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Visibility</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Visibilité</label>
               <select
                 value={visibilityFilter}
                 onChange={(e) => setVisibilityFilter(e.target.value as any)}
                 className="input-field"
               >
-                <option value="ALL">All Notes</option>
-                <option value="PRIVATE">Private</option>
-                <option value="SHARED">Shared</option>
-                <option value="PUBLIC">Public</option>
+                <option value="ALL">Toutes les notes</option>
+                <option value="PRIVATE">Privée</option>
+                <option value="SHARED">Partagée</option>
+                <option value="PUBLIC">Publique</option>
               </select>
             </div>
 
@@ -142,7 +142,7 @@ const SearchNotesPage: React.FC = () => {
                 className="btn-primary"
               >
                 <Search className="w-4 h-4 mr-2" />
-                Search
+                Rechercher
               </button>
             </div>
           </div>
@@ -161,14 +161,14 @@ const SearchNotesPage: React.FC = () => {
             <div className="mx-auto w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-4">
               <Search className="w-12 h-12 text-gray-400" />
             </div>
-            <h3 className="text-lg font-medium text-gray-900 mb-2">No notes found</h3>
-            <p className="text-gray-500">Try adjusting your search criteria.</p>
+            <h3 className="text-lg font-medium text-gray-900 mb-2">Aucune note trouvée</h3>
+            <p className="text-gray-500">Essayez d'ajuster vos critères de recherche.</p>
           </div>
         ) : (
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <h2 className="text-lg font-semibold text-gray-900">
-                Search Results ({filteredNotes.length})
+                Résultats de recherche ({filteredNotes.length})
               </h2>
             </div>
 
@@ -193,9 +193,9 @@ const SearchNotesPage: React.FC = () => {
 
                   <div className="flex items-center justify-between text-sm text-gray-500">
                     <div className="flex items-center space-x-4">
-                      <span>By {note.owner.name}</span>
+                      <span>Par {note.owner.name}</span>
                       <span>•</span>
-                      <span>{new Date(note.updatedAt).toLocaleDateString()}</span>
+                      <span>{new Date(note.updatedAt).toLocaleDateString('fr-FR')}</span>
                     </div>
                     {note.tags.length > 0 && (
                       <div className="flex space-x-1">

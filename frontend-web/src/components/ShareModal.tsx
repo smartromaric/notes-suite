@@ -53,7 +53,7 @@ const ShareModal: React.FC<ShareModalProps> = ({ note, onClose }) => {
       <div className="bg-white rounded-lg shadow-xl max-w-md w-full p-6" onClick={(e) => e.stopPropagation()}>
         {/* Header */}
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold text-gray-900">Share Note</h3>
+          <h3 className="text-lg font-semibold text-gray-900">Partager la note</h3>
           <button
             onClick={onClose}
             className="p-1 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100"
@@ -78,8 +78,8 @@ const ShareModal: React.FC<ShareModalProps> = ({ note, onClose }) => {
                   <User className="w-5 h-5 text-blue-600" />
                 </div>
                 <div className="ml-3">
-                  <div className="font-medium text-gray-900">Share with User</div>
-                  <div className="text-sm text-gray-500">Share with a specific user by email</div>
+                  <div className="font-medium text-gray-900">Partager avec un utilisateur</div>
+                  <div className="text-sm text-gray-500">Partager avec un utilisateur spécifique par email</div>
                 </div>
               </div>
             </button>
@@ -96,8 +96,8 @@ const ShareModal: React.FC<ShareModalProps> = ({ note, onClose }) => {
                   <ExternalLink className="w-5 h-5 text-green-600" />
                 </div>
                 <div className="ml-3">
-                  <div className="font-medium text-gray-900">Create Public Link</div>
-                  <div className="text-sm text-gray-500">Generate a public link for anyone to view</div>
+                  <div className="font-medium text-gray-900">Créer un lien public</div>
+                  <div className="text-sm text-gray-500">Générer un lien public visible par tous</div>
                 </div>
               </div>
             </button>
@@ -109,7 +109,7 @@ const ShareModal: React.FC<ShareModalProps> = ({ note, onClose }) => {
           <form onSubmit={handleShareWithUser} className="space-y-4">
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                Email Address
+                Adresse email
               </label>
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
@@ -132,7 +132,7 @@ const ShareModal: React.FC<ShareModalProps> = ({ note, onClose }) => {
                 onClick={() => setShareMode('choose')}
                 className="btn-secondary flex-1"
               >
-                Back
+                Retour
               </button>
               <button
                 type="submit"
@@ -142,12 +142,12 @@ const ShareModal: React.FC<ShareModalProps> = ({ note, onClose }) => {
                 {isLoading ? (
                   <div className="flex items-center justify-center">
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                    Sharing...
+                    Partage...
                   </div>
                 ) : (
                   <div className="flex items-center justify-center">
                     <Send className="w-4 h-4 mr-2" />
-                    Share
+                    Partager
                   </div>
                 )}
               </button>
@@ -167,10 +167,10 @@ const ShareModal: React.FC<ShareModalProps> = ({ note, onClose }) => {
                 <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
                   <div className="flex items-center mb-2">
                     <ExternalLink className="w-5 h-5 text-green-600 mr-2" />
-                    <span className="text-sm font-medium text-green-800">Public link created successfully!</span>
+                    <span className="text-sm font-medium text-green-800">Lien public créé avec succès !</span>
                   </div>
                   <p className="text-sm text-green-700">
-                    Anyone with this link can view your note.
+                    Toute personne avec ce lien peut voir votre note.
                   </p>
                 </div>
 
@@ -187,17 +187,17 @@ const ShareModal: React.FC<ShareModalProps> = ({ note, onClose }) => {
                 </div>
 
                 {copied && (
-                  <p className="text-sm text-green-600 text-center">✓ Link copied to clipboard!</p>
+                  <p className="text-sm text-green-600 text-center">✓ Lien copié dans le presse-papiers !</p>
                 )}
               </>
             ) : (
               <div className="text-center py-8">
-                <p className="text-gray-500 mb-4">Failed to generate public link.</p>
+                <p className="text-gray-500 mb-4">Échec de génération du lien public.</p>
                 <button
                   onClick={handleCreatePublicLink}
                   className="btn-primary"
                 >
-                  Try Again
+                  Réessayer
                 </button>
               </div>
             )}
@@ -211,14 +211,14 @@ const ShareModal: React.FC<ShareModalProps> = ({ note, onClose }) => {
                 }}
                 className="btn-secondary flex-1"
               >
-                Back
+                Retour
               </button>
               <button
                 type="button"
                 onClick={onClose}
                 className="btn-primary flex-1"
               >
-                Done
+                Terminé
               </button>
             </div>
           </div>

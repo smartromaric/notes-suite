@@ -48,8 +48,8 @@ const RegisterPage: React.FC = () => {
           <div className="inline-flex items-center justify-center w-16 h-16 bg-yellow-500 rounded-full mb-4">
             <User className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-3xl font-bold text-white mb-2">Create Account</h1>
-          <p className="text-gray-300">Join us today</p>
+          <h1 className="text-3xl font-bold text-white mb-2">Créer un compte</h1>
+          <p className="text-gray-300">Rejoignez-nous aujourd'hui</p>
         </div>
 
         {/* Register Form */}
@@ -58,7 +58,7 @@ const RegisterPage: React.FC = () => {
             {/* Name Field */}
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                Full Name
+                Nom
               </label>
               <div className="relative">
                 <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
@@ -77,7 +77,7 @@ const RegisterPage: React.FC = () => {
             {/* Email Field */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                Email Address
+                Email 
               </label>
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
@@ -99,7 +99,7 @@ const RegisterPage: React.FC = () => {
             {/* Password Field */}
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-                Password
+                Mot de Passe
               </label>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
@@ -109,7 +109,7 @@ const RegisterPage: React.FC = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className={`input-field pl-10 pr-10 ${isPasswordValid ? 'border-green-500' : ''}`}
-                  placeholder="Create a password"
+                  placeholder="Créez un mot de passe"
                   required
                 />
                 <button
@@ -124,7 +124,7 @@ const RegisterPage: React.FC = () => {
                 <div className="mt-2 text-xs">
                   <div className={`flex items-center ${isPasswordValid ? 'text-green-600' : 'text-gray-500'}`}>
                     <Check className={`w-3 h-3 mr-1 ${isPasswordValid ? 'text-green-500' : 'text-gray-400'}`} />
-                    At least 6 characters
+                    Au moins 6 caractères
                   </div>
                 </div>
               )}
@@ -133,7 +133,7 @@ const RegisterPage: React.FC = () => {
             {/* Confirm Password Field */}
             <div>
               <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-2">
-                Confirm Password
+                Confirmation Mot de Passe
               </label>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
@@ -143,7 +143,7 @@ const RegisterPage: React.FC = () => {
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   className={`input-field pl-10 pr-10 ${password === confirmPassword && confirmPassword ? 'border-green-500' : confirmPassword ? 'border-red-500' : ''}`}
-                  placeholder="Confirm your password"
+                  placeholder="Confirmez votre mot de passe"
                   required
                 />
                 <button
@@ -155,12 +155,12 @@ const RegisterPage: React.FC = () => {
                 </button>
               </div>
               {confirmPassword && password !== confirmPassword && (
-                <p className="mt-1 text-xs text-red-600">Passwords do not match</p>
+                <p className="mt-1 text-xs text-red-600">Les mots de passe ne correspondent pas</p>
               )}
             </div>
 
             {/* Terms and Conditions */}
-            <div className="flex items-start">
+            {/* <div className="flex items-start">
               <input
                 id="terms"
                 type="checkbox"
@@ -178,7 +178,7 @@ const RegisterPage: React.FC = () => {
                   Privacy Policy
                 </Link>
               </label>
-            </div>
+            </div> */}
 
             {/* Error Message */}
             {error && (
@@ -205,19 +205,19 @@ const RegisterPage: React.FC = () => {
               {isLoading ? (
                 <div className="flex items-center justify-center">
                   <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                  Creating account...
+                  Création...
                 </div>
               ) : (
-                'Create Account'
+                'Créer mon compte'
               )}
             </button>
 
             {/* Login Link */}
             <div className="text-center">
               <p className="text-sm text-gray-600">
-                Already have an account?{' '}
+                Vous avez déjà un compte ?{' '}
                 <Link to="/login" className="font-medium text-primary-600 hover:text-primary-500">
-                  Sign in
+                  Se connecter
                 </Link>
               </p>
             </div>
