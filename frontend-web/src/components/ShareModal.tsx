@@ -14,7 +14,8 @@ const ShareModal: React.FC<ShareModalProps> = ({ note, onClose }) => {
   const [shareMode, setShareMode] = useState<'choose' | 'user' | 'public'>('choose');
   const [email, setEmail] = useState('');
   const [publicLink, setPublicLink] = useState<string | null>(null);
-  const [copied, setCopied] = useState(false);
+  const [copiedWeb, setCopiedWeb] = useState(false);
+  const [copiedMobile, setCopiedMobile] = useState(false);
 
   const handleShareWithUser = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,22 +30,24 @@ const ShareModal: React.FC<ShareModalProps> = ({ note, onClose }) => {
   const handleCreatePublicLink = async () => {
     try {
       const token = await shareNotePublic(note.id);
-      const link = `${window.location.origin}/p/${token}`;
-      setPublicLink(link);
+      setPublicLink(token);
     } catch (error) {
       // Error handled by hook
     }
   };
 
-  const copyToClipboard = async () => {
-    if (publicLink) {
-      try {
-        await navigator.clipboard.writeText(publicLink);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
-      } catch (error) {
-        console.error('Failed to copy to clipboard:', error);
+  const copyToClipboard = async (text: string, type: 'web' | 'mobile') => {
+    try {
+      await navigator.clipboard.writeText(text);
+      if (type === 'web') {
+        setCopiedWeb(true);
+        setTimeout(() => setCopiedWeb(false), 2000);
+      } else {
+        setCopiedMobile(true);
+        setTimeout(() => setCopiedMobile(false), 2000);
       }
+    } catch (error) {
+      console.error('Failed to copy to clipboard:', error);
     }
   };
 
@@ -174,21 +177,53 @@ const ShareModal: React.FC<ShareModalProps> = ({ note, onClose }) => {
                   </p>
                 </div>
 
-                <div className="p-3 bg-gray-50 border border-gray-200 rounded-lg">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-600 truncate flex-1 mr-2">{publicLink}</span>
-                    <button
-                      onClick={copyToClipboard}
-                      className="p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100 transition-colors"
-                    >
-                      {copied ? <Check className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />}
-                    </button>
+                {/* Lien Web */}
+                <div>
+                  <label className="block text-xs font-medium text-gray-700 mb-2">
+                    Lien Web (Navigateur)
+                  </label>
+                  <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-gray-700 truncate flex-1 mr-2">
+                        {`${window.location.origin}/p/${publicLink}`}
+                      </span>
+                      <button
+                        onClick={() => copyToClipboard(`${window.location.origin}/p/${publicLink}`, 'web')}
+                        className="p-2 text-blue-600 hover:text-blue-800 rounded-lg hover:bg-blue-100 transition-colors"
+                        title="Copier le lien web"
+                      >
+                        {copiedWeb ? <Check className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />}
+                      </button>
+                    </div>
                   </div>
+                  {copiedWeb && (
+                    <p className="text-xs text-green-600 mt-1">✓ Lien web copié !</p>
+                  )}
                 </div>
 
-                {copied && (
-                  <p className="text-sm text-green-600 text-center">✓ Lien copié dans le presse-papiers !</p>
-                )}
+                {/* Lien Mobile/API */}
+                <div>
+                  <label className="block text-xs font-medium text-gray-700 mb-2">
+                    Lien Mobile (Application)
+                  </label>
+                  <div className="p-3 bg-purple-50 border border-purple-200 rounded-lg">
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-gray-700 truncate flex-1 mr-2">
+                        {`${window.location.protocol}//${window.location.hostname}:9090/p/${publicLink}`}
+                      </span>
+                      <button
+                        onClick={() => copyToClipboard(`${window.location.protocol}//${window.location.hostname}:9090/p/${publicLink}`, 'mobile')}
+                        className="p-2 text-purple-600 hover:text-purple-800 rounded-lg hover:bg-purple-100 transition-colors"
+                        title="Copier le lien mobile"
+                      >
+                        {copiedMobile ? <Check className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />}
+                      </button>
+                    </div>
+                  </div>
+                  {copiedMobile && (
+                    <p className="text-xs text-green-600 mt-1">✓ Lien mobile copié !</p>
+                  )}
+                </div>
               </>
             ) : (
               <div className="text-center py-8">
