@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import SimpleMDE from 'react-simplemde-editor';
+import type SimpleMDEType from 'easymde';
 import 'easymde/dist/easymde.min.css';
 
 interface MarkdownEditorProps {
@@ -13,7 +14,7 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
   onChange, 
   placeholder = 'Write your note content here...' 
 }) => {
-  const options = useMemo(() => {
+  const options = useMemo<SimpleMDEType.Options>(() => {
     return {
       spellChecker: false,
       placeholder,
@@ -38,7 +39,7 @@ const MarkdownEditor: React.FC<MarkdownEditorProps> = ({
         'fullscreen',
         '|',
         'guide',
-      ],
+      ] as SimpleMDEType.Options['toolbar'],
       minHeight: '400px',
       maxHeight: '600px',
     };

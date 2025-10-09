@@ -14,14 +14,12 @@ import {
   ExternalLink
 } from 'lucide-react';
 import { useNotes } from '../hooks/useNotes';
-import { useAuth } from '../hooks/useAuth';
 import MarkdownRenderer from '../components/MarkdownRenderer';
 import { NoteDetailSkeleton } from '../components/Skeleton';
 
 const NoteDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { user } = useAuth();
   const { notes, deleteNote, shareNotePublic, isLoading } = useNotes();
   const [showShareOptions, setShowShareOptions] = useState(false);
   const [publicLink, setPublicLink] = useState<string | null>(null);

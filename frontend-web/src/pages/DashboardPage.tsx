@@ -31,14 +31,10 @@ const DashboardPage: React.FC = () => {
   const { user, logout } = useAuth();
   const { 
     notes,
-    filteredNotes, 
     isLoading, 
     loadNotes, 
     deleteNote, 
-    getAllTags,
-    searchNotes,
-    filterByTags,
-    filterByVisibility 
+    getAllTags
   } = useNotes();
   const navigate = useNavigate();
 

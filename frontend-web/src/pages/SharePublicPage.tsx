@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Copy, ExternalLink, Check } from 'lucide-react';
 import { useNotes } from '../hooks/useNotes';
 
 const SharePublicPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
   const { notes, shareNotePublic, isLoading } = useNotes();
   
   const note = notes.find(n => n.id === parseInt(id || '0'));

@@ -13,8 +13,7 @@ const SearchNotesPage: React.FC = () => {
     filteredNotes, 
     isLoading, 
     loadNotes, 
-    getAllTags,
-    setSearchParams 
+    getAllTags
   } = useNotes();
   const navigate = useNavigate();
 

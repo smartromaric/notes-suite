@@ -10,7 +10,6 @@ const RegisterPage: React.FC = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [acceptTerms, setAcceptTerms] = useState(false);
   
   const { register, isLoading, error } = useAuth();
   const navigate = useNavigate();
@@ -32,7 +31,7 @@ const RegisterPage: React.FC = () => {
 
   const isPasswordValid = password.length >= 6;
   const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  const isFormValid = name && isEmailValid && isPasswordValid && password === confirmPassword && acceptTerms;
+  const isFormValid = name && isEmailValid && isPasswordValid && password === confirmPassword;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center p-4">
